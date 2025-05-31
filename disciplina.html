@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disciplina Positiva - Proyecto TFG Educación Infantil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5faff;
+      color: #1c1c1c;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      line-height: 1.5;
+    }
+    header {
+      background: #EF8C31;
+      padding: 20px 0;
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #ff9f43;
+      outline: none;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+    h1 {
+      color: #4a90e2;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 1px 1px 5px rgba(74, 144, 226, 0.6);
+    }
+    section {
+      margin-bottom: 40px;
+      background: white;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.15);
+      user-select: none;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: 700;
+      border-bottom: 2px solid #4a90e2;
+      padding-bottom: 5px;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    footer {
+      background-color: #EF8C31;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo del proyecto" class="logo" />
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="disciplina.html">Disciplina Positiva</a>
+      <a href="comunicacion.html">Comunicación No Violenta</a>
+      <a href="emociones.html">Desarrollo Emocional</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Disciplina Positiva</h1>
+
+    <section>
+      <h2>¿Qué es la Disciplina Positiva?</h2>
+      <p>
+        La disciplina positiva es un enfoque educativo que busca guiar a los niños con respeto, empatía y firmeza, evitando el uso de castigos físicos o humillaciones. En la etapa de 0 a 3 años, se basa en comprender el desarrollo emocional y cognitivo del niño, reconociendo que aún no tienen la capacidad de autorregularse completamente.
+      </p>
+      <p>
+        Por eso, es fundamental que los padres establezcan una conexión afectiva segura, respondan con paciencia a sus necesidades y comportamientos, y utilicen el ejemplo como principal herramienta de enseñanza.
+      </p>
+    </section>
+
+    <section>
+      <h2>Principios clave</h2>
+      <ul>
+        <li>Creación de rutinas estables</li>
+        <li>Establecimiento de límites claros y consistentes</li>
+        <li>Validación de las emociones del niño</li>
+        <li>Manejo paciente en berrinches y frustraciones</li>
+        <li>Fomentar la autonomía y seguridad emocional</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Objetivo</h2>
+      <p>
+        Criar niños seguros, autónomos y empáticos, fortaleciendo la relación entre padres e hijos desde los primeros años de vida.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Proyecto TFG - El Maltrato Infantil. Todos los derechos reservados.
+  </footer>
+
+  <!-- GSAP y ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación main sections - aparecen desde la izquierda
+    gsap.from("main section", {
+      scrollTrigger: {
+        trigger: "main",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      duration: 1,
+      x: -100,
+      opacity: 0,
+      stagger: 0.35,
+      ease: "power3.out",
+    });
+
+    // Animación título principal
+    gsap.from("main h1", {
+      duration: 1,
+      y: -30,
+      opacity: 0,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+
+    // Animación menú enlaces hover
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => {
+        gsap.to(link, { scale: 1.15, color: "#ff9f43", duration: 0.3 });
+      });
+      link.addEventListener("mouseleave", () => {
+        gsap.to(link, { scale: 1, color: "#fff", duration: 0.3 });
+      });
+    });
+  </script>
+</body>
+</html>
